@@ -31,6 +31,7 @@ read::          Read a file (workspace or absolute path)
 create::        Create a new empty file
 list::          List files and folders (directory listing)
 generate::      AI code generation - analyze, extend, improve, create
+chat::          Chat with AI agent - paste code or ask questions
 history::       Show conversation history
 clear::         Clear session and conversation history (with confirmation)
 help::          Show this help message
@@ -64,17 +65,22 @@ USAGE EXAMPLES:
    - Plan project tasks
    - All in one powerful command
 
-5. VIEW HISTORY:
+5. CHAT WITH AI (Multi-line conversation):
+   blink> chat:: create an simulation of how temperature sensor works in python
+   [Type your full request or paste code]
+   [When done, type just "end" on a new line]
+
+6. VIEW HISTORY:
    blink> history::
 
-6. CLEAR SESSION:
+7. CLEAR SESSION:
    blink> clear::
    (Clears current session with confirmation prompt)
 
-7. HELP:
+8. HELP:
    blink> help::
 
-8. EXIT:
+9. EXIT:
    blink> exit::
 
 ------------------------------------------------------------------------
@@ -207,6 +213,73 @@ USAGE EXAMPLES:
         except Exception as e:
             print(f"[ERROR] {e}\n")
             self.agent.memory.add_message("assistant", f"Error: {e}", "generate")
+
+    def handle_chat_command(self, initial_request: str):
+        """Handle chat command - conversational AI interaction"""
+        print(f"\n[CHAT] {initial_request[:70]}...\n")
+        print("[INFO] Type your message or paste code (type 'end' on new line when done):\n")
+        
+        # Collect multi-line input
+        lines = []
+        if initial_request:
+            lines.append(initial_request)
+        
+        try:
+            while True:
+                line = input()
+                if line.strip().lower() == "end":
+                    break
+                lines.append(line)
+        except EOFError:
+            pass
+        
+        full_message = "\n".join(lines).strip()
+        
+        if not full_message:
+            print("[WARN] No message provided.\n")
+            return
+        
+        print(f"\n[PROCESSING] Analyzing your request...\n")
+        
+        try:
+            # Create conversational context - AI sees this is a chat interaction
+            chat_context = f"""
+CHAT INTERACTION
+User wants conversational code assistance. Process their request naturally.
+
+Request:
+{full_message}
+
+Provide helpful code examples, explanations, or solutions based on what they're asking for.
+Keep responses concise and practical. If they paste code, analyze and improve it.
+"""
+            
+            result = self.agent.client.generate(chat_context)
+            
+            # Display result
+            print("─" * 70)
+            print(result)
+            print("─" * 70)
+            print()
+            
+            # Offer save option for code blocks
+            save = input("[SAVE?] Save generated code to file? (y/n): ").strip().lower()
+            if save in ["y", "yes"]:
+                file_path = input("[PATH] Enter file path: ").strip().strip('"\'')
+                if file_path:
+                    result_dict = self.file_handler.save_file(file_path, result)
+                    if result_dict.get("success"):
+                        print(f"\n[OK] Saved to {result_dict.get('path')}\n")
+                    else:
+                        print(f"\n[ERROR] {result_dict.get('error')}\n")
+            
+            # Log to conversation memory
+            self.agent.memory.add_message("user", f"chat:: {full_message[:100]}", "chat")
+            self.agent.memory.add_message("assistant", f"Chat response {len(result)} chars", "chat")
+            
+        except Exception as e:
+            print(f"[ERROR] {e}\n")
+            self.agent.memory.add_message("assistant", f"Error: {e}", "chat")
 
     def handle_history_command(self):
         """Handle history command - show conversations"""
@@ -354,6 +427,12 @@ USAGE EXAMPLES:
                         print("[ERROR] Usage: generate:: <instruction>\n")
                         continue
                     self.handle_generate_command(args)
+                
+                elif command == "chat":
+                    if not args:
+                        print("[ERROR] Usage: chat:: <request>\n")
+                        continue
+                    self.handle_chat_command(args)
                 
                 elif command == "history":
                     self.handle_history_command()

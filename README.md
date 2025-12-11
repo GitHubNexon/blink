@@ -4,11 +4,11 @@ An AI-powered agentic command-based assistant that can read, create, and modify 
 
 ## [=>] Quick Start (3 Ways to Use)
 
-| Version          | How to Run                   | Best For      |
-| ---------------- | ---------------------------- | ------------- |
+| Version          | How to Run                   | Best For       |
+| ---------------- | ---------------------------- | -------------- |
 | **EXE App**      | Download from Releases & run | [*] Most Users |
-| **Python (Raw)** | `python main.py`             | Developers    |
-| **Source Code**  | Clone & modify               | Contributors  |
+| **Python (Raw)** | `python main.py`             | Developers     |
+| **Source Code**  | Clone & modify               | Contributors   |
 
 [=>] **New users?** Start with [INSTALLATION.md](INSTALLATION.md) for detailed setup guide
 
@@ -92,6 +92,7 @@ Available commands (all use `::` delimiter):
 - `create:: <file>` - Create a new empty file
 - `list:: [directory]` - List files and folders in directory
 - `generate:: <instruction>` - AI code generation with full project context
+- `chat:: <request>` - Chat with AI agent (multi-line, paste code, ask questions)
 - `history::` - Show conversation history from current session
 - `clear::` - Clear current session and conversation history
 - `help::` - Show help message
@@ -114,6 +115,11 @@ blink> list:: src/
 
 # Generate code with AI
 blink> generate:: Create a TypeScript validator function
+
+# Chat with AI (conversational, multi-line)
+blink> chat:: Create a temperature sensor simulation
+[Type your message, paste code, or ask questions]
+[Type 'end' on a new line when done]
 
 # View conversation history
 blink> history::
