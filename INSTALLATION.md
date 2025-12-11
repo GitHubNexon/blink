@@ -31,10 +31,10 @@ The easiest way - download and run!
 
 **Security:**
 
-- ✅ Token NEVER saved to disk
-- ✅ Token ONLY in memory while running
-- ✅ Token cleared on exit
-- ✅ Token validated on startup
+- [X] Token NEVER saved to disk
+- [X] Token ONLY in memory while running
+- [X] Token cleared on exit
+- [X] Token validated on startup
 
 #### Steps
 
@@ -73,11 +73,42 @@ Every time you run `Blink.exe`, you'll need to enter your API token. This keeps 
 
 ### Option 2: Raw Version (Python Development)
 
-macOS/Linux:
+For developers who want full control!
 
-```bash
-source venv/Scripts/activate
-```
+#### Requirements
+
+- Python 3.8+
+- Internet connection
+- Replicate API token
+
+#### Steps
+
+1. **Clone the project**
+
+   ```bash
+   git clone https://github.com/yourusername/blink.git
+   cd blink
+   ```
+
+2. **Create virtual environment**
+
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate virtual environment**
+
+   Windows:
+
+   ```bash
+   venv\Scripts\activate.bat
+   ```
+
+   macOS/Linux:
+
+   ```bash
+   source venv/bin/activate
+   ```
 
 4. **Install dependencies**
 
@@ -111,13 +142,13 @@ source venv/Scripts/activate
 
 ---
 
-### Option 2: App Version (EXE Executable - Build It Yourself)
+### Option 3: App Version (EXE Executable - Build It Yourself)
 
 **Why build it yourself?**
 
-- Never expose your API token ✅
-- Your token stays on your computer ✅
-- Full control over the executable ✅
+- Never expose your API token [X]
+- Your token stays on your computer [X]
+- Full control over the executable [X]
 
 #### Requirements
 
@@ -167,7 +198,7 @@ source venv/Scripts/activate
 2. **Copy the `.env` file** to the same folder as `Blink.exe`
 3. **Double-click `Blink.exe`** to launch
 
-⚠️ **Important:** Keep your `.env` file secure and don't share it!
+[!] **Important:** Keep your `.env` file secure and don't share it!
 
 #### Why This Approach?
 
@@ -309,7 +340,7 @@ REPLICATE_API_TOKEN=your_actual_token_here
 
 | Feature                 | Raw Python      | Built EXE       |
 | ----------------------- | --------------- | --------------- |
-| **Python Installation** | Required        | Not needed\*    |
+| **Python Installation** | Required        | Not needed*     |
 | **Setup Time**          | ~3 min          | ~5 min (build)  |
 | **Customization**       | Full access     | Limited         |
 | **Performance**         | Slightly faster | Slightly slower |
@@ -318,7 +349,7 @@ REPLICATE_API_TOKEN=your_actual_token_here
 | **Security**            | Full control    | Full control    |
 | **Token Exposure**      | Never           | Never           |
 
-\*Note: Python required to BUILD the EXE, but not to RUN it
+*Note: Python required to BUILD the EXE, but not to RUN it
 
 ---
 
@@ -337,7 +368,7 @@ python build_exe.py
 ### GitHub Releases
 
 1. Build the EXE: `python build_exe.py`
-2. Compress: `dist/Blink.exe` → `Blink-v1.0.0.zip`
+2. Compress: `dist/Blink.exe` -> `Blink-v1.0.0.zip`
 3. Go to GitHub Releases
 4. Create new release
 5. Upload the zip file
@@ -371,4 +402,4 @@ When reporting issues, include:
 - Check [QUICKSTART.md](QUICKSTART.md) for quick tutorials
 - Explore project structure in `src/`
 
-Happy coding with Blink! 🚀
+Happy coding with Blink! [=>]

@@ -12,7 +12,7 @@ This error means Blink needs your Replicate API token to work. Follow the steps 
 
 ## Solution: 3 Easy Ways to Set Up
 
-### Method 1: Automatic Setup (RECOMMENDED) ⭐
+### Method 1: Automatic Setup (RECOMMENDED) [*]
 
 The easiest way - our setup script will guide you through everything:
 
@@ -133,11 +133,11 @@ python build_exe.py
 After setup, verify everything works:
 
 ```bash
-✓ .env file exists in project root
-✓ REPLICATE_API_TOKEN is in the .env file
-✓ Token is from https://replicate.com
-✓ Python dependencies installed (pip install -r requirements.txt)
-✓ Virtual environment activated (if using raw version)
+[X] .env file exists in project root
+[X] REPLICATE_API_TOKEN is in the .env file
+[X] Token is from https://replicate.com
+[X] Python dependencies installed (pip install -r requirements.txt)
+[X] Virtual environment activated (if using raw version)
 ```
 
 Run: `python main.py`
@@ -190,4 +190,4 @@ Make sure to check "Add Python to PATH" during installation.
 
 ---
 
-Good luck! You're almost there! 🚀
+Good luck! You're almost there! [=>]

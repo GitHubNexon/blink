@@ -35,11 +35,11 @@ dist/
 
 The executable includes:
 
-- ✅ Python 3.X runtime
-- ✅ All dependencies (requests, pathvalidate, python-dotenv)
-- ✅ All source code (src/ folder)
-- ✅ MCP server and agent logic
-- ✅ CLI interface
+- [X] Python 3.X runtime
+- [X] All dependencies (requests, pathvalidate, python-dotenv)
+- [X] All source code (src/ folder)
+- [X] MCP server and agent logic
+- [X] CLI interface
 
 ### Build Options
 
@@ -109,7 +109,7 @@ Release Package:
 7z a Blink-v1.0.0.zip dist/Blink.exe .env.example README.md INSTALLATION.md
 
 # Or on Windows
-# Right-click → Send to → Compressed (zipped) folder
+# Right-click -> Send to -> Compressed (zipped) folder
 ```
 
 ### 3. Portable Package
@@ -380,4 +380,4 @@ For distribution questions:
 
 ---
 
-Happy distributing! 🚀
+Happy distributing! [=>]

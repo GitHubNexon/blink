@@ -1,4 +1,4 @@
-# 🚀 AI Agent - Quick Start Guide (Simplified)
+# [=>] AI Agent - Quick Start Guide (Simplified)
 
 ## Initial Setup
 
@@ -26,21 +26,18 @@ source venv/Scripts/activate
 python main.py
 ```
 
-## ✨ Simple Commands (6 Only!)
+## [*] Simple Commands (6 Only!)
 
-✅ **read::** - Read a file
-✅ **create::** - Create empty file
-✅ **list::** - List files/folders (like dir)
-✅ **generate::** - AI does everything (code, analyze, extend, improve, etc.)
-✅ **history::** - Show conversation
-✅ **help::** - Show commands
+[X] **read::** - Read a file
+[X] **create::** - Create empty file
+[X] **list::** - List files/folders (like dir)
+[X] **generate::** - AI does everything (code, analyze, extend, improve, etc.)
+[X] **history::** - Show conversation
+[X] **help::** - Show commands
 
 ## Simple Command Format
 
 All commands use double colon `::`
-
-````
-
 
 ```
 read:: <file>
@@ -88,12 +85,12 @@ blink> generate:: "C:\path\to\file1.ts" Create pH variant like "C:\path\to\file2
 ```
 
 The `generate::` command can:
-- ✅ Create new code from scratch
-- ✅ Improve existing code
-- ✅ Analyze and refactor
-- ✅ Create variants/extensions
-- ✅ Plan projects
-- ✅ Everything in ONE command!
+- [X] Create new code from scratch
+- [X] Improve existing code
+- [X] Analyze and refactor
+- [X] Create variants/extensions
+- [X] Plan projects
+- [X] Everything in ONE command!
 
 ### 5. View Conversation
 
@@ -191,5 +188,4 @@ Activate venv: `source venv/Scripts/activate`
 5. Try: `read:: test.py`
 6. Try: `history::`
 
-That's it! Simple and powerful. 🚀
-````
+That's it! Simple and powerful. [=>]

@@ -46,7 +46,7 @@ When you run Blink (either EXE or Python), here's exactly what happens with your
 
 ## Why This Approach?
 
-### 🔒 Security Benefits
+### [LOCK] Security Benefits
 
 1. **No Token Storage** - Token never touches disk
 2. **Validated Every Time** - Bad tokens caught immediately
@@ -54,7 +54,7 @@ When you run Blink (either EXE or Python), here's exactly what happens with your
 4. **Memory-Only** - RAM gets wiped when process ends
 5. **Safe to Share** - Can distribute EXE without token exposure
 
-### 👤 User Benefits
+### [USER] User Benefits
 
 1. **Simple** - Just run app, enter token
 2. **Safe** - No worrying about token storage
@@ -144,7 +144,7 @@ When you release Blink EXE:
 2. Release just the `Blink.exe` file (NO TOKEN EMBEDDED!)
 3. Users download and run `Blink.exe`
 4. They enter their own token
-5. Everyone is secure! ✅
+5. Everyone is secure! [X]
 
 No tokens in releases, no security risks, no exposure!
 

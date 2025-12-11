@@ -2,26 +2,26 @@
 
 An AI-powered agentic command-based assistant that can read, create, and modify code files with intelligent assistance from Replicate's Claude models.
 
-## 🚀 Quick Start (3 Ways to Use)
+## [=>] Quick Start (3 Ways to Use)
 
 | Version          | How to Run                   | Best For      |
 | ---------------- | ---------------------------- | ------------- |
-| **EXE App**      | Download from Releases & run | ⭐ Most Users |
+| **EXE App**      | Download from Releases & run | [*] Most Users |
 | **Python (Raw)** | `python main.py`             | Developers    |
 | **Source Code**  | Clone & modify               | Contributors  |
 
-👉 **New users?** Start with [INSTALLATION.md](INSTALLATION.md) for detailed setup guide
+[=>] **New users?** Start with [INSTALLATION.md](INSTALLATION.md) for detailed setup guide
 
-🔑 **Token handling:** The EXE prompts for your API token on startup, validates it, and clears it when you exit. Super secure!
+[LOCK] **Token handling:** The EXE prompts for your API token on startup, validates it, and clears it when you exit. Super secure!
 
 ## Features
 
-✅ **Read Files** - Access project files directly (workspace or external paths)
-✅ **Create Files** - Generate new files with AI assistance  
-✅ **List Files** - Browse your project structure
-✅ **Code Generation** - Create code from AI instructions with full context
-✅ **Session History** - Track all conversations and commands
-✅ **Session Management** - Clear and organize your workspace
+[X] **Read Files** - Access project files directly (workspace or external paths)
+[X] **Create Files** - Generate new files with AI assistance  
+[X] **List Files** - Browse your project structure
+[X] **Code Generation** - Create code from AI instructions with full context
+[X] **Session History** - Track all conversations and commands
+[X] **Session Management** - Clear and organize your workspace
 
 ## Setup
 
@@ -39,11 +39,11 @@ The best way for most users - just download and run!
 
 **How it works:**
 
-- App prompts for your token on startup ✅
-- Token is validated immediately ✅
-- Token is cleared when you exit ✅
-- Token NEVER saved to disk ✅
-- Super secure! 🔒
+- App prompts for your token on startup [X]
+- Token is validated immediately [X]
+- Token is cleared when you exit [X]
+- Token NEVER saved to disk [X]
+- Super secure! [LOCK]
 
 ### Option 2: Run as Python (For Developers)
 
