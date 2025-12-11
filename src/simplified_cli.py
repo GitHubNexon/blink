@@ -242,40 +242,55 @@ USAGE EXAMPLES:
         print(f"\n[PROCESSING] Analyzing your request...\n")
         
         try:
-            # Create conversational context - AI sees this is a chat interaction
-            chat_context = f"""
-CHAT INTERACTION
-User wants conversational code assistance. Process their request naturally.
-
-Request:
-{full_message}
-
-Provide helpful code examples, explanations, or solutions based on what they're asking for.
-Keep responses concise and practical. If they paste code, analyze and improve it.
-"""
+            # Use the full context method for chat - same as generate
+            result = self.agent.generate_code_with_full_context(full_message, [])
             
-            result = self.agent.client.generate(chat_context)
-            
-            # Display result
-            print("─" * 70)
-            print(result)
-            print("─" * 70)
-            print()
-            
-            # Offer save option for code blocks
-            save = input("[SAVE?] Save generated code to file? (y/n): ").strip().lower()
-            if save in ["y", "yes"]:
-                file_path = input("[PATH] Enter file path: ").strip().strip('"\'')
-                if file_path:
-                    result_dict = self.file_handler.save_file(file_path, result)
-                    if result_dict.get("success"):
-                        print(f"\n[OK] Saved to {result_dict.get('path')}\n")
+            # If result is very long, offer to save directly
+            result_length = len(result)
+            if result_length > 5000:
+                print(f"[INFO] Generated {result_length} characters of code\n")
+                print("─" * 70)
+                print(result[:2000] + "\n... [OUTPUT TRUNCATED] ...\n" if result_length > 2000 else result)
+                print("─" * 70)
+                print()
+                
+                save = input("[SAVE] Save complete output to file? (y/n): ").strip().lower()
+                if save in ["y", "yes"]:
+                    file_path = input("[PATH] Enter file path: ").strip().strip('"\'')
+                    if file_path:
+                        result_dict = self.file_handler.save_file(file_path, result)
+                        if result_dict.get("success"):
+                            print(f"\n[OK] SAVED")
+                            print(f"     Path: {result_dict.get('path')}")
+                            print(f"     Size: {result_dict.get('size')} bytes\n")
+                        else:
+                            print(f"\n[ERROR] {result_dict.get('error')}\n")
                     else:
-                        print(f"\n[ERROR] {result_dict.get('error')}\n")
+                        print("[WARN] No file path provided\n")
+                else:
+                    print("[INFO] Use 'read:: <filename>' to view saved files\n")
+            else:
+                # Display result normally for shorter outputs
+                print("─" * 70)
+                print(result)
+                print("─" * 70)
+                print()
+                
+                save = input("[SAVE] Write to file? (y/n): ").strip().lower()
+                if save in ["y", "yes"]:
+                    file_path = input("[PATH] Enter file path: ").strip().strip('"\'')
+                    if file_path:
+                        result_dict = self.file_handler.save_file(file_path, result)
+                        if result_dict.get("success"):
+                            print(f"\n[OK] SAVED")
+                            print(f"     Path: {result_dict.get('path')}")
+                            print(f"     Size: {result_dict.get('size')} bytes\n")
+                        else:
+                            print(f"\n[ERROR] {result_dict.get('error')}\n")
             
             # Log to conversation memory
             self.agent.memory.add_message("user", f"chat:: {full_message[:100]}", "chat")
-            self.agent.memory.add_message("assistant", f"Chat response {len(result)} chars", "chat")
+            self.agent.memory.add_message("assistant", f"Chat response {result_length} chars", "chat")
             
         except Exception as e:
             print(f"[ERROR] {e}\n")
